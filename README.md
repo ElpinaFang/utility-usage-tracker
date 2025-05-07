@@ -1,4 +1,4 @@
-# Utility Tracker 🌿
+# Utility Usage Tracker 🌿
 
 A fullstack web application to track and visualize daily household electricity and water meter readings.
 
