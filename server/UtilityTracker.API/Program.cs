@@ -13,14 +13,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddCors(options =>
+/*builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost3000",
         policy => policy.WithOrigins("http://localhost:3000")
                         .AllowAnyHeader()
                         .AllowAnyMethod());
 });
-
+*/
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowS3", builder =>
+    {
+        builder.WithOrigins("http://your-s3-url.amazonaws.com")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -46,7 +55,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowLocalhost3000");
+//app.UseCors("AllowLocalhost3000");
+app.UseCors("AllowS3");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
