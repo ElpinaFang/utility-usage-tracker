@@ -5,4 +5,5 @@ client/node_modules/
 bin/
 obj/
 server/UtilityTracker.API/appsettings.json
+*.pem
 
